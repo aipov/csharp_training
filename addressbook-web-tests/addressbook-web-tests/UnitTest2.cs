@@ -62,6 +62,7 @@ namespace SeleniumTests
             driver.FindElement(By.Name("submit")).Click();
             driver.FindElement(By.LinkText("Logout")).Click();
         }
+        //jjkgkjf
         private bool IsElementPresent(By by)
         {
             try
