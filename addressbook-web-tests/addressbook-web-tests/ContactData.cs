@@ -12,7 +12,6 @@ namespace WebAddressbookTests
         private string middlename = "none";
         private string lastname = "none";
         private string nickname = "none";
-        
         private string title = "none";
         private string company = "none";
         private string address = "none";
@@ -69,8 +68,8 @@ namespace WebAddressbookTests
             }
         }
 
-        
-         public string Nickname
+
+        public string Nickname
         {
             get
             {
@@ -92,73 +91,73 @@ namespace WebAddressbookTests
                 title = value;
             }
         }
-            
+
         public string Company
+        {
+            get
             {
-             get
-                {
-                    return company;
-                }
-                set
-                {
-                    company = value;
-                }   
+                return company;
             }
+            set
+            {
+                company = value;
+            }
+        }
         public string Address
+        {
+            get
             {
-                get
-                {
-                    return address;
-                }
-                set
-                {
-                    address = value;
-                }
+                return address;
             }
+            set
+            {
+                address = value;
+            }
+        }
         public string Home
+        {
+            get
             {
-                get
-                {
-                    return home;
-                }
-                set
-                {
-                    home = value;
-                }
+                return home;
             }
+            set
+            {
+                home = value;
+            }
+        }
         public string Mobile
+        {
+            get
             {
-                get
-                {
-                    return mobile;
-                }
-                set
-                {
-                    mobile = value;
-                }
+                return mobile;
             }
+            set
+            {
+                mobile = value;
+            }
+        }
         public string Work
+        {
+            get
             {
-                get
-                {
-                    return work;
-                }
-                set
-                {
-                    work = value;
-                }
+                return work;
             }
+            set
+            {
+                work = value;
+            }
+        }
         public string Fax
+        {
+            get
             {
-                get
-                {
-                    return fax;
-                }
-                set
-                {
-                    fax = value;
-                }
+                return fax;
             }
+            set
+            {
+                fax = value;
+            }
+        }
         public string Email
         {
             get
@@ -215,27 +214,27 @@ namespace WebAddressbookTests
             }
         }
         public string Phone2
-               {
-                   get
-                   {
-                       return phone2;
-                   }
-                   set
-                   {
-                       home = phone2;
-                   }
-               }
+        {
+            get
+            {
+                return phone2;
+            }
+            set
+            {
+                home = phone2;
+            }
+        }
         public string Email3
         {
-                   get
-                   {
-                       return email3;
-                   }
-                   set
-                   {
-                       email3 = value;
-                   }
-               }
+            get
+            {
+                return email3;
+            }
+            set
+            {
+                email3 = value;
+            }
+        }
 
     }
 }
