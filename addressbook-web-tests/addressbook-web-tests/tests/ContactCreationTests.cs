@@ -9,13 +9,9 @@ namespace WebAddressbookTests
     [TestFixture]
     public class ContactCreationTests : TestBase
     {
-
         [Test]
         public void ContactCreationTest()
         {
-            GoToHomePage();
-            Login(new AccountData("admin", "secret"));
-            InitContactCreation();
             ContactData contact = new ContactData("James");
             contact.Middlename = "007";
             contact.Lastname = "Bond";
@@ -28,9 +24,29 @@ namespace WebAddressbookTests
             contact.Homepage = "gazprom.facebook.com";
             contact.Address2 = "London";
             contact.Notes = "Special";
-            FillContactForm(contact);
-            SubmitContactCreation();
-            ReturnToHomePage();
+
+            app.Contacts.Create(contact);
+            app.Auth.Logout();
+        }
+
+        [Test]
+        public void EmptyContactCreationTest()
+        {
+            ContactData contact = new ContactData("");
+            contact.Middlename = "";
+            contact.Lastname = "";
+            contact.Title = "";
+            contact.Company = "";
+            contact.Address = "";
+            contact.Mobile = "";
+            contact.Work = "";
+            contact.Email = "";
+            contact.Homepage = "";
+            contact.Address2 = "";
+            contact.Notes = "";
+
+            app.Contacts.Create(contact);
+            app.Auth.Logout();
         }
     }
 }
