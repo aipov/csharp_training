@@ -14,7 +14,7 @@ namespace WebAddressbookTests
         public ContactHelper(ApplicationManager manager) : base(manager)
         { }
 
-        internal ContactHelper Create(ContactData contact)
+        public ContactHelper Create(ContactData contact)
         {
             manager.Contacts.InitContactCreation();
             FillContactForm(contact);
@@ -22,6 +22,22 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public ContactHelper Modify(int v, ContactData newData)
+        {
+            InitContactModification();
+            FillContactForm(newData);
+            SubmitContactModification();
+            return this;
+        }
+
+        public ContactHelper Remove(int v)
+        {
+            manager.Contacts.SelectContact(v);
+            RemoveContact();
+            return this;
+        }
+
+        //низкоуровневые методы
         public void InitContactCreation()
         {
             driver.FindElement(By.LinkText("add new")).Click();
@@ -84,12 +100,31 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("notes")).Clear();
             driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
         }
-
         
         public void SubmitContactCreation()
         {
             driver.FindElement(By.CssSelector("input[type=\"submit\"]")).Click();
         }
 
+        private void InitContactModification()
+        {
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+        }
+
+        private void SubmitContactModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+        }
+
+        public void SelectContact(int v)
+        {
+            driver.FindElement(By.CssSelector("input[type='checkbox']")).Click();
+        }
+
+        private void RemoveContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            driver.SwitchTo().Alert().Accept();
+        }
     }
 }

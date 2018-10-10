@@ -14,7 +14,7 @@ namespace WebAddressbookTests
         {
             ContactData contact = new ContactData("James");
             contact.Middlename = "007";
-            contact.Lastname = "Bond";
+            contact.Lastname = "10oct";
             contact.Title = "Agent";
             contact.Company = "Gazprom";
             contact.Address = "Moscow";
@@ -26,7 +26,6 @@ namespace WebAddressbookTests
             contact.Notes = "Special";
 
             app.Contacts.Create(contact);
-            app.Auth.Logout();
         }
 
         [Test]
@@ -46,7 +45,6 @@ namespace WebAddressbookTests
             contact.Notes = "";
 
             app.Contacts.Create(contact);
-            app.Auth.Logout();
         }
     }
 }
