@@ -15,16 +15,16 @@ namespace WebAddressbookTests
         {
             ContactData newData = new ContactData("James");
             newData.Middlename = "TIM";
-            newData.Lastname = "10oct";
+            newData.Lastname = null;
             newData.Title = "Agent";
             newData.Company = "Apple";
             newData.Address = "California";
-            newData.Mobile = "+55555555555";
+            newData.Mobile = null;
             newData.Work = "+10008888888";
-            newData.Email = "test@mail.com";
-            newData.Homepage = "apple.com";
-            newData.Address2 = "San-Francisco";
-            newData.Notes = "comments";
+            newData.Email = null;
+            newData.Homepage = null;
+            newData.Address2 = null;
+            newData.Notes = null;
 
             app.Contacts.Modify(1, newData);
         }
