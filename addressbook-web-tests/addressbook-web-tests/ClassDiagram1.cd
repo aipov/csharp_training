@@ -3,7 +3,7 @@
   <Class Name="WebAddressbookTests.ApplicationManager">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAAEQABAAAAAAAAAAAAASAAAAAgAAAIBCAABEAACA=</HashCode>
+      <HashCode>BAAAAEQABAAAAAAAAAAAAASABAAAgAAAADCAABEAACA=</HashCode>
       <FileName>appmanager\ApplicationManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -16,14 +16,14 @@
   <Class Name="WebAddressbookTests.LoginHelper" Collapsed="true">
     <Position X="3.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAASAAAAAAA=</HashCode>
       <FileName>appmanager\LoginHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebAddressbookTests.ContactHelper" Collapsed="true">
     <Position X="4.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAEAAAAAAAABAAAAgAAAEAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AABAIAAACAAEAAAAAAAABAAAAgAAAEAAAAAYAAAAAgA=</HashCode>
       <FileName>appmanager\ContactHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -51,7 +51,7 @@
   <Class Name="WebAddressbookTests.TestBase">
     <Position X="0.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>tests\TestBase.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -74,14 +74,6 @@
   </Class>
   <Class Name="WebAddressbookTests.GroupModificationTests" Collapsed="true">
     <Position X="3.25" Y="6" Width="1.5" />
-    <InheritanceLine Type="WebAddressbookTests.TestBase" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="2.25" Y="6.046" />
-        <Point X="2.625" Y="6.046" />
-        <Point X="2.625" Y="6.312" />
-        <Point X="3.25" Y="6.312" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>tests\GroupModificationTests.cs</FileName>
@@ -90,7 +82,7 @@
   <Class Name="WebAddressbookTests.HelperBase" Collapsed="true">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABCEAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>appmanager\HelperBase.cs</FileName>
     </TypeIdentifier>
   </Class>
