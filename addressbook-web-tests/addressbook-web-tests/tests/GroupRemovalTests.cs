@@ -14,6 +14,10 @@ namespace WebAddressbookTests
         public void GroupRemovalTest()
         {
             app.Groups.Remove(1);
+            
+            GroupData group = new GroupData("10oct");
+            group.Header = "g22";
+            group.Footer = "g33";
         }
     }
 }

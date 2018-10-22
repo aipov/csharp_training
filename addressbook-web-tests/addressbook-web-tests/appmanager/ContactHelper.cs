@@ -19,21 +19,34 @@ namespace WebAddressbookTests
             manager.Contacts.InitContactCreation();
             FillContactForm(contact);
             SubmitContactCreation();
+            manager.Navigator.GoToHomePage();
             return this;
         }
 
         public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.GoToHomePage();
+            if(!ContactExists())
+            {
+                ContactData contact = new ContactData("Temp");
+                contact.Middlename = "temporary";
+                Create(contact);
+            }
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
             return this;
         }
-
+        
         public ContactHelper Remove(int v)
         {
             manager.Navigator.GoToHomePage();
+            if (!ContactExists())
+            {
+                ContactData contact = new ContactData("Temp");
+                contact.Middlename = "temporary";
+                Create(contact);
+            }
             manager.Contacts.SelectContact(v);
             RemoveContact();
             return this;
@@ -91,6 +104,11 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             driver.SwitchTo().Alert().Accept();
+        }
+
+        private bool ContactExists()
+        {
+            return IsElementPresent(By.TagName("td"));
         }
     }
 }

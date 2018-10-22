@@ -37,17 +37,17 @@ namespace WebAddressbookTests
                 == "(" + account.Username + ")";
         }
 
-        public bool IsLoggedIn()
-        {
-            return IsElementPresent(By.Name("logout"));
-        }
-
         public void Logout()
         {
             if (IsLoggedIn())
             {
                 driver.FindElement(By.LinkText("Logout")).Click();
             }
+        }
+
+        public bool IsLoggedIn()
+        {
+            return IsElementPresent(By.Name("logout"));
         }
 
     }
