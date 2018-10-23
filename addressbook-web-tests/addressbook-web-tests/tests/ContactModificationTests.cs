@@ -13,6 +13,8 @@ namespace WebAddressbookTests
         [Test]
         public void ContactModificationTest()
         {
+            app.Contacts.VerificationContactExists();
+
             ContactData newData = new ContactData("James");
             newData.Middlename = "TIM";
             newData.Lastname = null;

@@ -27,13 +27,6 @@ namespace WebAddressbookTests
         public GroupHelper Modify(int v, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
-            if (!IsGroupExists())
-            {
-                GroupData group = new GroupData("10oct");
-                group.Header = "g22";
-                group.Footer = "g33";
-                Create(group);
-            }
             SelectGroup(v);
             InitGroupModification();
             FillGroupForm(newData);
@@ -45,13 +38,6 @@ namespace WebAddressbookTests
         public GroupHelper Remove(int v)
         {
             manager.Navigator.GoToGroupsPage();
-            if (!IsGroupExists())
-            {
-                GroupData group = new GroupData("10oct");
-                group.Header = "g22";
-                group.Footer = "g33";
-                Create(group);
-            }
             SelectGroup(v);
             RemoveGroup();
             ReturnToGroupsPage();
@@ -59,6 +45,19 @@ namespace WebAddressbookTests
             
         }
 
+        public void VerificationGroupExists()
+        {
+            manager.Navigator.GoToGroupsPage();
+            if (IsGroupExists())
+            { }
+            else
+            {
+                GroupData group = new GroupData("10oct");
+                group.Header = "g22";
+                group.Footer = "g33";
+                Create(group);
+            }
+        }
 
         //низкоуровневые методы
         public void SelectGroup(int index)

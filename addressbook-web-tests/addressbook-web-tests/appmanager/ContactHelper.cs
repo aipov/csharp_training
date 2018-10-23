@@ -13,7 +13,7 @@ namespace WebAddressbookTests
     {
         public ContactHelper(ApplicationManager manager) : base(manager)
         { }
-
+        
         public ContactHelper Create(ContactData contact)
         {
             manager.Contacts.InitContactCreation();
@@ -26,12 +26,6 @@ namespace WebAddressbookTests
         public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.GoToHomePage();
-            if(!ContactExists())
-            {
-                ContactData contact = new ContactData("Temp");
-                contact.Middlename = "temporary";
-                Create(contact);
-            }
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
@@ -41,17 +35,23 @@ namespace WebAddressbookTests
         public ContactHelper Remove(int v)
         {
             manager.Navigator.GoToHomePage();
-            if (!ContactExists())
-            {
-                ContactData contact = new ContactData("Temp");
-                contact.Middlename = "temporary";
-                Create(contact);
-            }
             manager.Contacts.SelectContact(v);
             RemoveContact();
             return this;
         }
 
+        public void VerificationContactExists()
+        {
+            manager.Navigator.GoToHomePage();
+            if (IsContactExists())
+            { }
+            else
+            {
+                ContactData contact = new ContactData("Temp");
+                contact.Middlename = "temporary";
+                Create(contact);
+            }
+        }
         //низкоуровневые методы
         public void InitContactCreation()
         {
@@ -106,7 +106,7 @@ namespace WebAddressbookTests
             driver.SwitchTo().Alert().Accept();
         }
 
-        private bool ContactExists()
+        private bool IsContactExists()
         {
             return IsElementPresent(By.TagName("td"));
         }
