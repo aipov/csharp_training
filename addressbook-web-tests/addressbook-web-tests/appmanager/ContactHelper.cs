@@ -7,6 +7,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
+
 namespace WebAddressbookTests
 {
     public class ContactHelper : HelperBase
@@ -31,7 +32,23 @@ namespace WebAddressbookTests
             SubmitContactModification();
             return this;
         }
-        
+
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            
+            manager.Navigator.GoToHomePage();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name=entry]"));
+            foreach (IWebElement element in elements)
+            {
+
+                var cells = element.FindElements(By.CssSelector("td"));
+
+                contacts.Add(new ContactData(cells[0].Text));
+            }
+            return contacts;
+        }
+
         public ContactHelper Remove(int v)
         {
             manager.Navigator.GoToHomePage();
