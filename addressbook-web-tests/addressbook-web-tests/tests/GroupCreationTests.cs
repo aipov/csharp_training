@@ -18,9 +18,7 @@ namespace WebAddressbookTests
             group.Footer = "g33";
 
             List<GroupData> oldGroups = app.Groups.GetGroupsList();
-
             app.Groups.Create(group);
-
             List<GroupData> newGroups = app.Groups.GetGroupsList();
             oldGroups.Add(group);
             oldGroups.Sort();
@@ -37,9 +35,7 @@ namespace WebAddressbookTests
             
             app.Groups.Create(group);
             List<GroupData> oldGroups = app.Groups.GetGroupsList();
-
             app.Groups.Create(group);
-
             List<GroupData> newGroups = app.Groups.GetGroupsList();
             oldGroups.Add(group);
             oldGroups.Sort();

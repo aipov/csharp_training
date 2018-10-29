@@ -33,18 +33,15 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public List<ContactData> GetContactList()
+        public List<ContactData> GetContactsList()
         {
             List<ContactData> contacts = new List<ContactData>();
-            
             manager.Navigator.GoToHomePage();
             ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name=entry]"));
             foreach (IWebElement element in elements)
             {
-
                 var cells = element.FindElements(By.CssSelector("td"));
-
-                contacts.Add(new ContactData(cells[0].Text));
+                contacts.Add(new ContactData(cells[1].Text));
             }
             return contacts;
         }

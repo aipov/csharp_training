@@ -37,7 +37,7 @@ namespace WebAddressbookTests
 
         public override string ToString()
         {
-            return "name=" + Name;
+            return Name;
         }
 
         public int CompareTo(GroupData other)
