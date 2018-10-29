@@ -42,6 +42,7 @@ namespace WebAddressbookTests
             {
                 var cells = element.FindElements(By.CssSelector("td"));
                 contacts.Add(new ContactData(cells[1].Text));
+                contacts.Add(new ContactData(cells[2].Text));
             }
             return contacts;
         }

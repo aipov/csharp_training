@@ -38,13 +38,13 @@ namespace WebAddressbookTests
             {
                 return false;
             }
-            if (object.ReferenceEquals(this, other))
+            if (Object.ReferenceEquals(this, other))
             {
                 return true;
             }
-            return Lastname == other.Lastname ;
+            return Lastname == other.Lastname && Firstname == other.Firstname;
         }
-
+     
         public override int GetHashCode()
         {
             return Lastname.GetHashCode() + Firstname.GetHashCode();
@@ -52,20 +52,18 @@ namespace WebAddressbookTests
 
         public override string ToString()
         {
-            return Lastname;
+            return Lastname + Firstname;
         }
 
         public int CompareTo(ContactData other)
         {
-
-            
             if(Object.ReferenceEquals(other, null))
             {
                 return 1;
             }
-            return Lastname.CompareTo(other.Lastname);
-            
+            return Lastname.CompareTo(other.Lastname) + Firstname.CompareTo(other.Firstname);
         }
+        
 
         public string Firstname
         {
@@ -102,8 +100,7 @@ namespace WebAddressbookTests
                 lastname = value;
             }
         }
-
-
+        
         public string Nickname
         {
             get
@@ -115,6 +112,7 @@ namespace WebAddressbookTests
                 nickname = value;
             }
         }
+
         public string Title
         {
             get
