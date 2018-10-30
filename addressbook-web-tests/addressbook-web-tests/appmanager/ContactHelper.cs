@@ -7,7 +7,6 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-
 namespace WebAddressbookTests
 {
     public class ContactHelper : HelperBase
@@ -42,7 +41,6 @@ namespace WebAddressbookTests
             {
                 var cells = element.FindElements(By.CssSelector("td"));
                 contacts.Add(new ContactData(cells[1].Text));
-                contacts.Add(new ContactData(cells[2].Text));
             }
             return contacts;
         }
