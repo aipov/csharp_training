@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -23,6 +24,42 @@ namespace WebAddressbookTests
             return this;
         }
 
+        internal ContactData GetInformationFromEditForm(int index)
+        {
+            manager.Navigator.GoToHomePage();
+            InitContactModification();
+            string firstname = driver.FindElement(By.Name("firstname")).GetAttribute("value");
+            string lastname = driver.FindElement(By.Name("lastname")).GetAttribute("value");
+            string address = driver.FindElement(By.Name("address")).GetAttribute("value");
+            string homephone = driver.FindElement(By.Name("home")).GetAttribute("value");
+            string mobilephone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
+            string workphone = driver.FindElement(By.Name("work")).GetAttribute("value");
+
+            return new ContactData(firstname)
+            {
+                Address = address,
+                Home = homephone,
+                Mobile = mobilephone,
+                Work = workphone
+            };
+        }
+
+        internal ContactData GetInformationFromTable(int index)
+        {
+            manager.Navigator.GoToHomePage();
+            IList<IWebElement> cells = driver.FindElements(By.Name("entry"))[index].FindElements(By.TagName("td"));
+            string lastName = cells[1].Text;
+            string firstName = cells[2].Text;
+            string address = cells[3].Text;
+            string allPhones = cells[5].Text;
+
+            return new ContactData(firstName)
+            {
+                Address = address,
+                AllPhones = allPhones
+            };
+        }
+
         public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.GoToHomePage();
@@ -30,6 +67,14 @@ namespace WebAddressbookTests
             FillContactForm(newData);
             SubmitContactModification();
             return this;
+        }
+
+        public int GetNumberOfSearchResults()
+        {
+            manager.Navigator.GoToHomePage();
+            string text = driver.FindElement(By.TagName("label")).Text;
+            Match m = new Regex(@"\d+").Match(text);
+            return Int32.Parse(m.Value);
         }
 
         public List<ContactData> GetContactsList()
