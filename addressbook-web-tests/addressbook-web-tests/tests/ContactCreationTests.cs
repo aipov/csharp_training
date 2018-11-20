@@ -13,7 +13,7 @@ namespace WebAddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            ContactData contact = new ContactData("James");
+            ContactData contact = new ContactData("James", "");
             contact.Middlename = "007";
             contact.Lastname = "Ivanov";
             contact.Title = "Agent";
@@ -25,7 +25,7 @@ namespace WebAddressbookTests
             contact.Homepage = "gazprom.facebook.com";
             contact.Address2 = "London";
             contact.Notes = "Special";
-/*
+
             List<ContactData> oldContacts = app.Contacts.GetContactsList();
             app.Contacts.Create(contact);
             List<ContactData> newContacts = app.Contacts.GetContactsList();
@@ -33,13 +33,12 @@ namespace WebAddressbookTests
             oldContacts.Sort();
             newContacts.Sort();
             Assert.AreEqual(oldContacts, newContacts);
-            */
         }
 
         [Test]
         public void EmptyContactCreationTest()
         {
-            ContactData contact = new ContactData("");
+            ContactData contact = new ContactData("", "");
             contact.Middlename = "";
             contact.Lastname = "";
             contact.Title = "";

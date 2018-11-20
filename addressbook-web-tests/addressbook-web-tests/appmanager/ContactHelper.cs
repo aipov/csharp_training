@@ -35,7 +35,7 @@ namespace WebAddressbookTests
             string mobilephone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
             string workphone = driver.FindElement(By.Name("work")).GetAttribute("value");
 
-            return new ContactData(firstname)
+            return new ContactData(firstname, lastname)
             {
                 Address = address,
                 Home = homephone,
@@ -53,7 +53,7 @@ namespace WebAddressbookTests
             string address = cells[3].Text;
             string allPhones = cells[5].Text;
 
-            return new ContactData(firstName)
+            return new ContactData(firstName, lastName)
             {
                 Address = address,
                 AllPhones = allPhones
@@ -85,7 +85,7 @@ namespace WebAddressbookTests
             foreach (IWebElement element in elements)
             {
                 var cells = element.FindElements(By.CssSelector("td"));
-                contacts.Add(new ContactData(cells[1].Text));
+                contacts.Add(new ContactData(cells[2].Text, cells[1].Text));
             }
             return contacts;
         }
@@ -105,7 +105,7 @@ namespace WebAddressbookTests
             { }
             else
             {
-                ContactData contact = new ContactData("Temp");
+                ContactData contact = new ContactData("Temp", "");
                 contact.Middlename = "temporary";
                 Create(contact);
             }

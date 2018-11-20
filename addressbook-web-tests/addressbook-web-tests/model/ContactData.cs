@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace WebAddressbookTests
 {
-    public class ContactData : IEquatable<ContactData>//, IComparable<ContactData>
+    public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string allPhones;
 
@@ -31,9 +31,10 @@ private string notes = "none";
 private string phone2 = "none";
 private string email3 = "none";
 */
-        public ContactData(string firstname)
+        public ContactData(string firstname, string lastname)
         {
             Firstname = firstname;
+            Lastname = lastname;
         }
 
         public string Firstname { get; set; }
@@ -110,32 +111,34 @@ private string email3 = "none";
                  {
                      return true;
                  }
-                 return Lastname == other.Lastname && Firstname == other.Firstname;
+                 return Firstname == other.Firstname && Lastname == other.Lastname;
              }
-        /*
-             public override int GetHashCode()
+        
+         public override int GetHashCode()
              {
-                 return Lastname.GetHashCode() + Firstname.GetHashCode();
-             }
-
-             public override string ToString()
-             {
-                 return Lastname + Firstname;
+                 return (Firstname + " " + Lastname).GetHashCode();
              }
 
-             public int CompareTo(ContactData other)
+         public override string ToString()
              {
-                 if (Lastname.CompareTo(other.Lastname) == 0)
+                 return Firstname + Lastname;
+             }
+
+         public int CompareTo(ContactData other)
+             {
+                 if (Object.ReferenceEquals(other, null))
                  {
-                     return 0;
+                     return 1;
                   }
-                 if (Lastname.CompareTo(other.Lastname) == 0 && Firstname.CompareTo(other.Firstname) == 0)
+            int result = Lastname.CompareTo(other.Lastname);
+            if (result != 0)
                  {
-                     return 0;
+                     return result;
                  }
-                 return 0;//Lastname.CompareTo(other.Lastname);// + Firstname.CompareTo(other.Firstname);
-             }
-     */
-
+                 else
+            {
+                return Firstname.CompareTo(other.Firstname);
+            }
+         }
     }
 }
