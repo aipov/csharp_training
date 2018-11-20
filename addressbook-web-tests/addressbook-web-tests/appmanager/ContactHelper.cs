@@ -44,6 +44,11 @@ namespace WebAddressbookTests
             };
         }
 
+        public int GetGroupsCount()
+        {
+            return driver.FindElements(By.CssSelector("tr[name=entry]")).Count;
+        }
+
         internal ContactData GetInformationFromTable(int index)
         {
             manager.Navigator.GoToHomePage();
@@ -77,17 +82,22 @@ namespace WebAddressbookTests
             return Int32.Parse(m.Value);
         }
 
+        private List<ContactData> contactCashe = null;
+
         public List<ContactData> GetContactsList()
         {
-            List<ContactData> contacts = new List<ContactData>();
-            manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name=entry]"));
-            foreach (IWebElement element in elements)
-            {
-                var cells = element.FindElements(By.CssSelector("td"));
-                contacts.Add(new ContactData(cells[2].Text, cells[1].Text));
-            }
-            return contacts;
+            if (contactCashe == null)
+                {
+                    contactCashe = new List<ContactData>();
+                    manager.Navigator.GoToHomePage();
+                    ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name=entry]"));
+                    foreach (IWebElement element in elements)
+                    {
+                        var cells = element.FindElements(By.CssSelector("td"));
+                        contactCashe.Add(new ContactData(cells[2].Text, cells[1].Text));
+                    }
+                }
+            return contactCashe;
         }
 
         public ContactHelper Remove(int v)
@@ -141,6 +151,7 @@ namespace WebAddressbookTests
         public void SubmitContactCreation()
         {
             driver.FindElement(By.CssSelector("input[type=\"submit\"]")).Click();
+            contactCashe = null;
         }
 
         private void InitContactModification()
@@ -151,6 +162,7 @@ namespace WebAddressbookTests
         private void SubmitContactModification()
         {
             driver.FindElement(By.Name("update")).Click();
+            contactCashe = null;
         }
 
         public void SelectContact(int v)
@@ -162,6 +174,7 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             driver.SwitchTo().Alert().Accept();
+            contactCashe = null;
         }
 
         private bool IsContactExists()

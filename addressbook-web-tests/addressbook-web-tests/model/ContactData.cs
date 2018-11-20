@@ -137,7 +137,7 @@ private string email3 = "none";
                  }
                  else
             {
-                return Firstname.CompareTo(other.Firstname);
+                return Firstname.CompareTo(other.Firstname) + Lastname.CompareTo(other.Lastname);
             }
          }
     }
